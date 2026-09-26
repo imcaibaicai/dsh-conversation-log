@@ -1,0 +1,56 @@
+{
+  "name": "dsh-conversation-log",
+  "description": "Per-session readable conversation logs for DeepSeek Harness (dsh): auto-writes Markdown + JSONL records per session, maintains a searchable index, and exposes a conversation_recall model tool for one-sentence lookup of any past conversation. Pure plugin, no core changes.",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "conversation",
+    "session",
+    "export",
+    "markdown",
+    "transcript",
+    "log"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-settings-general",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-session",
+        "@deepseek-ai/dsh-client-ui-primitives"
+      ],
+      "platform": "web"
+    }
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@deepseek-ai/dsh-tools": "^0.1.1-rc.2",
+    "@deepseek-ai/dsh-commands": "^0.1.1-rc.2",
+    "@deepseek-ai/dsh-session-query": "^0.1.1-rc.2"
+  },
+  "license": "MIT"
+}
